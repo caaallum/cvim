@@ -19,7 +19,7 @@ setup({
   preselect = cmp.PreselectMode.None,
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
+    format = lspkind_status_ok,
   },
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,

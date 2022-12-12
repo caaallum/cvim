@@ -28,6 +28,11 @@ return require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
+  use 'mrjones2014/smart-splits.nvim'
+  use 'akinsho/toggleterm.nvim'
+  use 'famiu/bufdelete.nvim'
+  use 'akinsho/bufferline.nvim'
+  use 'goolord/alpha-nvim'
 
   if packer_bootstrap then
     require('packer').sync()

@@ -23,15 +23,14 @@ vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>')
 
 -- Close current buffer
-vim.keymap.set('n', '<leader>c', '<cmd>bdelete<cr>')
-vim.keymap.set('n', '<leader>C', '<cmd>bdelete!<cr>') 
+vim.keymap.set('n', '<leader>c', function() require("bufdelete").bufdelete(0, false) end)
+vim.keymap.set('n', '<leader>C', function() require("bufdelete").bufdelete(0, true) end) 
 
 -- Buffer 
 vim.keymap.set('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>')
 vim.keymap.set('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>')
 vim.keymap.set('n', '>b', '<cmd>BufferLineMoveNext<cr>')
 vim.keymap.set('n', '<b', '<cmd>BufferLineMovePrev<cr>')
-
 
 -- Nvim Tree
 vim.keymap.set('n', '<c-n>', '<cmd>NvimTreeFindFileToggle<cr>')

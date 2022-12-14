@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
   }
+  use 'alec-gibson/nvim-tetris'
+  use 'p00f/nvim-ts-rainbow'
+  use 'windwp/nvim-autopairs'
   if packer_bootstrap then
     require('packer').sync()
   end

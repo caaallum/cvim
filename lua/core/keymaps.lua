@@ -8,6 +8,7 @@ vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.autoread = true
 vim.opt.number = true
+vim.opt.termguicolors = true
 
 -- Use space for tabs
 vim.opt.tabstop = 4

@@ -10,3 +10,4 @@ require("core.plugin_config.bufferline")
 require("core.plugin_config.alpha")
 require("core.plugin_config.cmp")
 require("core.plugin_config.autopairs")
+

@@ -34,7 +34,8 @@ vim.keymap.set('n', '>b', '<cmd>BufferLineMoveNext<cr>')
 vim.keymap.set('n', '<b', '<cmd>BufferLineMovePrev<cr>')
 
 -- Nvim Tree
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>')
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>o', '<cmd>NvimTreeFocus<cr>')
 
 -- Resizing splits
 vim.keymap.set('n', '<C-Left>', require('smart-splits').resize_left)

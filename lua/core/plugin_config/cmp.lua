@@ -1,50 +1,64 @@
-local cmp = require'cmp'
+local cmp = require('cmp')
+
+local icons = {
+    Text = '',
+    Method = '',
+    Function = '',
+    Constructor = '',
+    Field = 'ﰠ',
+    Variable = '',
+    Class = 'ﴯ',
+    Interface = '',
+    Module = '',
+    Property = 'ﰠ',
+    Unit = '塞',
+    Value = '',
+    Enum = '',
+    Keyword = '',
+    Snippet = '',
+    Color = '',
+    File = '',
+    Reference = '',
+    Folder = '',
+    EnumMember = '',
+    Constant = '',
+    Struct = 'פּ',
+    Event = '',
+    Operator = '',
+    TypeParameter = '',
+}
+
+local aliases = {
+    nvim_lsp = 'lsp',
+    luasnip = 'snippet',
+}
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body) 
-    end,
-  },
-  mapping = {
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
+    mapping = cmp.mapping.preset.insert({
+        ['<C-e>'] = cmp.config.disable,
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.complete(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lua' },
-    { name = 'luasnip' }, 
-  }, {
-    { name = 'buffer' },
-  }),
-  experimental = {
-    native_menu = false,
-    ghost_text = true,
-  }
-})
-
--- use buffer source for `/`.
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- use cmdline & path source for ':'.
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
+    sources = cmp.config.sources({
+        { name = 'vsnip', max_item_count = 10 },
+        { name = 'buffer', max_item_count = 10 },
+        { name = 'nvim_lsp', max_item_count = 10 },
+        { name = 'path', max_item_count = 10 }
+    }),
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    formatting = {
+        format = function(entry, item)
+            -- Kind icons
+            item.kind = string.format('%s %s', icons[item.kind], item.kind)
+            -- Source
+            item.menu = string.format('[%s]', aliases[entry.source.name] or entry.source.name)
+            return item
+        end,
+    },
 })

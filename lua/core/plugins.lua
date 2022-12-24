@@ -35,12 +35,13 @@ return require('packer').startup(function(use)
   use 'goolord/alpha-nvim'
   use {
     'hrsh7th/nvim-cmp',
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-nvim-lsp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-vsnip'
+    },
   }
-  use 'alec-gibson/nvim-tetris'
   use 'p00f/nvim-ts-rainbow'
   use 'windwp/nvim-autopairs'
   if packer_bootstrap then

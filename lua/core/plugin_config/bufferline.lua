@@ -27,6 +27,7 @@ require('bufferline').setup {
     max_prefix_length = 13,
     tab_size = 20,
     separator_style = "thin",
+    highlights = require("catppuccin.groups.integrations.bufferline").get()
   }
 }
 

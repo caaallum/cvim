@@ -1,4 +1,4 @@
-local servers = { "sumneko_lua", "clangd" }
+local servers = { "sumneko_lua", "clangd", "asm_lsp" }
 
 require("mason").setup()
 

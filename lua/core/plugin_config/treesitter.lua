@@ -1,9 +1,9 @@
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "vim" },
+  ensure_installed = { "c", "cpp", "cmake", "bash", "lua", "vim", "make", "markdown", "php", "m68k" },
 
   sync_install = false,
   auto_install = true,
   highlight = {
-      enabled = true,
+      enable = true,
   },
 }
